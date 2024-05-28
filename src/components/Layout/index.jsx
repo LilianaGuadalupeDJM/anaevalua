@@ -20,6 +20,7 @@ const LayoutComponent = ({leftColSize, rightColSize, leftContent, rightContent})
         </div>
         </Col>
         </Row>
+    </div>
     );
 }
 
