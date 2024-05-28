@@ -10,13 +10,13 @@ const LayoutComponent = ({leftColSize, rightColSize, leftContent, rightContent})
         <Row>
         <Col xs={leftColSize.xs} sm={leftColSize.sm} md={leftColSize.md} lg={leftColSize.lg}>
         <div className="content-left">
-        <h1 className="title">Izquierda</h1>
+        <ImagenLogin />
         </div>
 
         </Col>
         <Col xs={rightColSize.xs} sm={rightColSize.sm} md={rightColSize.md} lg={rightColSize.lg}>
         <div className="content-rigth">
-        <h1 className="title">Derecha</h1>
+        <FormLogin />
         </div>
         </Col>
         </Row>
