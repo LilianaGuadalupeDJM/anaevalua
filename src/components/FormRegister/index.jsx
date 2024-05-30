@@ -14,15 +14,6 @@ const FormRegister = () => {
         console.log('Failed:', errorInfo);
     }
 
-    //Estado de error de registro
-    const [registerError, setRegisterError] = useState(false);
-    //Estado de carga
-    const [loading, setLoading] = useState(false);
-
-    const validatePassword = ({getFieldValue}) => ({
-        
-    });
-
     return (
         <>
         <Card 
