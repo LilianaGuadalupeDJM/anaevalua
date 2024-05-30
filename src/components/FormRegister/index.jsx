@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, Card } from "antd";
-import {UserOutlined, LockOutlined} from '@ant-design/icons'
+import {UserOutlined, LockOutlined} from '@ant-design/icons';
 import './FormRegister.css';
+import { Axios } from "axios";
 
 const FormRegister = () => {
     
@@ -12,6 +13,15 @@ const FormRegister = () => {
     const onFinishFalided = (errorInfo) => {
         console.log('Failed:', errorInfo);
     }
+
+    //Estado de error de registro
+    const [registerError, setRegisterError] = useState(false);
+    //Estado de carga
+    const [loading, setLoading] = useState(false);
+
+    const validatePassword = ({getFieldValue}) => ({
+        
+    });
 
     return (
         <>
