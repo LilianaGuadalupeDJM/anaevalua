@@ -6,11 +6,13 @@ import './FormLogin.css';
 const FormLogin = () => {
     
     const onFinish = (values) => { 
-        console.log('Succes:', values);
+
+        //console.log('Succes:', values);
     }
 
     const onFinishFalided = (errorInfo) => {
         console.log('Failed:', errorInfo);
+        setLoginError(true);
     }
 
     return (

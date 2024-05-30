@@ -1,6 +1,7 @@
 import {ConfigProvider} from 'antd';
 import {BrowserRouter} from 'react-router-dom'
 import AppRoutes from './routes';
+import cors from 'cors';
 import './App.css'
 
 

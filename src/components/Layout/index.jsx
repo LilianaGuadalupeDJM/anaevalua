@@ -16,7 +16,7 @@ const LayoutComponent = ({leftColSize, rightColSize, leftContent, rightContent})
         </Col>
         <Col xs={rightColSize.xs} sm={rightColSize.sm} md={rightColSize.md} lg={rightColSize.lg}>
         <div className="content-rigth">
-        {rightContent}
+     {rightContent}
         </div>
         </Col>
         </Row>
