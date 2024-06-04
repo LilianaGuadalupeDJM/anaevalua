@@ -17,7 +17,7 @@ const FormLogin = () => {
        setLoading(true);
        try{
         const response = await axios.post('https://api-books-omega.vercel.app/getin/signin',{
-                email: values.email,
+                email: values.username,
                 password: values.password
             });
             console.log('Inicio de sesión exitoso:', response.data);
