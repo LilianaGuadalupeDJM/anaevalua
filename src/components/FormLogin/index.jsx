@@ -4,6 +4,8 @@ import {UserOutlined, LockOutlined} from '@ant-design/icons'
 import './FormLogin.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import authService from '../../services/auth';
+import { useAuth } from '../../hooks/useAuth';
 
 const FormLogin = () => {
     const navigate = useNavigate();
@@ -11,20 +13,25 @@ const FormLogin = () => {
        const [loginError, setLoginError] = useState(false);
        //Estado de carga
        const [loading, setLoading] = useState(false);
+       //Manejo de estado de autenticación
+       const useAuthData = useAuth();
+       console.log(useAuthData);
 
     const onFinish = async (values) => { 
-       // console.log('Succes:', values);
        setLoading(true);
+       setLoginError(false);
        try{
-        const response = await axios.post('https://api-books-omega.vercel.app/getin/signin',{
-                email: values.username,
-                password: values.password
-            });
-            console.log('Inicio de sesión exitoso:', response.data);
-            localStorage.setItem('token', response.data.token); //Guarda el token el almacenamiento local
-            navigate('/'); //Redirige al user a la página principal
+            const response = await authService.loginF(values.username, values.password);
+            if(response && response.data){
+                console.log('Inicio de sesión exitoso:', response.data.token);
+                localStorage.setItem('token', response.data.token); //Guarda el token el almacenamiento local
+                navigate('/'); //Redirige al user a la página principal
+            } else {
+                console.error('Error en el inicio de sesión: Respuesta inesperada');
+                setLoginError(true);
+            }
        } catch (error){
-        console.log('Error en el inicio se sesión:', error.response.data);
+        console.log('Error en el inicio se sesión:', error.response ? error.response.data : error.message);
         setLoading(true);
        } finally {
         setLoading(false); //Establece el estado de carga a falsedespués de recibir la respuesta

@@ -2,22 +2,18 @@ import React from "react";
 import { Form, Input, Button, Card } from "antd";
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
 import './FormRegister.css';
+import authService from '../../services/auth';
+import { validatePassword } from '../../utils/validation.js';
 
 const FormRegister = () => {
 
     const navigate = useNavigate();
     
     const onFinish = async (values) => { 
-        //console.log('Succes:', values);
         setLoading(true); //Establece el estado de carga a true al enviar el form
         try{
-            const response = await axios.post('https://api-books-omega.vercel.app/getin/signup',{
-                readername: values.username,
-                email: values.email,
-                password: values.password,
-                roles: ['MasterLibrarian']
-            });
-            console.log('Registro exitoso:', response.data);
+            const response = await authService.register(values.username, values.email, values.password);
+            console.log('Registro exitoso:');
             navigate('/login');
         } catch (error) {
             console.error('Error en el registro:', error.response.data);
