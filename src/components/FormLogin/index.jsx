@@ -1,16 +1,39 @@
-import React from "react";
+import React,{useState} from "react";
 import { Form, Input, Button, Card } from "antd";
 import {UserOutlined, LockOutlined} from '@ant-design/icons'
 import './FormLogin.css';
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const FormLogin = () => {
-    
-    const onFinish = (values) => { 
-        console.log('Succes:', values);
+    const navigate = useNavigate();
+       //Estado de error de registro
+       const [loginError, setLoginError] = useState(false);
+       //Estado de carga
+       const [loading, setLoading] = useState(false);
+
+    const onFinish = async (values) => { 
+       // console.log('Succes:', values);
+       setLoading(true);
+       try{
+        const response = await axios.post('https://api-books-omega.vercel.app/getin/signin',{
+                email: values.email,
+                password: values.password
+            });
+            console.log('Inicio de sesión exitoso:', response.data);
+            localStorage.setItem('token', response.data.token); //Guarda el token el almacenamiento local
+            navigate('/'); //Redirige al user a la página principal
+       } catch (error){
+        console.log('Error en el inicio se sesión:', error.response.data);
+        setLoading(true);
+       } finally {
+        setLoading(false); //Establece el estado de carga a falsedespués de recibir la respuesta
+       }
     }
 
     const onFinishFalided = (errorInfo) => {
         console.log('Failed:', errorInfo);
+        setLoadingError(true);
     }
 
     return (
@@ -26,7 +49,7 @@ const FormLogin = () => {
                 remember:true,
             }}
             onFinish={onFinish}
-            
+            onFinishFalided={onFinishFalided}
             >
                 <Form.Item
                 name="username"
