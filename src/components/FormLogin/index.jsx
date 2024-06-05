@@ -17,6 +17,8 @@ const FormLogin = () => {
        const useAuthData = useAuth();
        console.log(useAuthData);
 
+       const { login } = useAuthData
+
     const onFinish = async (values) => { 
        setLoading(true);
        setLoginError(false);
@@ -25,6 +27,7 @@ const FormLogin = () => {
             if(response && response.data){
                 console.log('Inicio de sesión exitoso:', response.data.token);
                 localStorage.setItem('token', response.data.token); //Guarda el token el almacenamiento local
+                login(response.data.token);
                 navigate('/'); //Redirige al user a la página principal
             } else {
                 console.error('Error en el inicio de sesión: Respuesta inesperada');
