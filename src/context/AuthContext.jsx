@@ -10,7 +10,7 @@ export const AuthProvider = (props) => {
         getSession();
     }, [])
     const getSession = async () => {
-        const token = await storageController.getToken();
+        const token = storageController.getToken();
         console.log('Token --> :',token);
     }
     
