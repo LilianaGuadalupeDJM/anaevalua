@@ -1,9 +1,9 @@
 export const ENV = {
-    API_URL: 'http://localhost:3000',
+    API_URL: 'https://api-books-omega.vercel.app',
     ENDPOINTS: {
-        LOGIN: 'api/auth/sigin',
-        REGISTER: 'api/auth/signup',
-        USER: '/api/users',
+        LOGIN: 'getin/signin',
+        REGISTER: 'getin/signUp',
+        USER: 'getin/obtenerusuario',
     },
     STORAGE: {
         TOKEN:"token",
