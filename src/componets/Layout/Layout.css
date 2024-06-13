@@ -1,0 +1,23 @@
+.layout-container{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.content-left{
+    height: 100vh;
+    background: #c5a6e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-right{
+    height: 100vh;
+    background: #6b03db;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
